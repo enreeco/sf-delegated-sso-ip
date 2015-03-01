@@ -1,0 +1,20 @@
+<apex:page controller="DelegateLoginController" tabStyle="Delegated_Auth__tab"> 
+    <apex:form >
+        <apex:sectionHeader title="Delegate authentication on SP org" />
+        
+        <apex:PageBlock >
+            <apex:pageBlockTable value="{!users}" var="u">
+            	<apex:column headerValue="Username">
+                    <apex:outputField value="{!u.usr.DelegatedUsername__c}" />
+                </apex:column>
+                <apex:column headerValue="ORG ID">
+                    <apex:outputField value="{!u.usr.Delegated_ORG_ID__c}" />
+                </apex:column>
+                <apex:column headerValue="">
+                    <apex:commandLink value="Login" target="_blank" action="{!u.delegateAuthentication}" />
+                </apex:column>
+            </apex:pageBlockTable>
+            
+        </apex:PageBlock>
+    </apex:form>
+</apex:page>
