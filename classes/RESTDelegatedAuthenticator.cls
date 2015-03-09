@@ -17,12 +17,10 @@ global without sharing class RESTDelegatedAuthenticator {
             authResult = checkCredentials(requestValues.get('username'), 
                                           requestValues.get('password'),
                                           requestValues.get('sourceIp'));
-        }catcH(Exception e){
-            //authResult = true;
+        }catch(Exception e){
             insert new Log__c(Description__c = e.getStackTraceString()+'\n'+e.getMessage(), 
                        Request__c = RestContext.request.requestBody.toString());
         }finally{
-            //authResult = true;
             insert new Log__c(Description__c = 'Result:'+authResult, 
                        Request__c = RestContext.request.requestBody.toString());
         }
